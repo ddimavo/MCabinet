@@ -1,0 +1,138 @@
+<xf:title>Пожаловаться на скин</xf:title>
+
+<xf:css>
+.report-dialog {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: var(--mc-bg-card);
+    border-radius: 16px;
+    box-shadow: var(--mc-shadow);
+}
+.report-preview {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: var(--mc-bg-info);
+    border-radius: 12px;
+    border: 1px solid var(--mc-border-light);
+}
+.report-preview-image {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+}
+.report-preview-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.report-preview-info {
+    flex: 1;
+}
+.report-reasons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.report-reason {
+    padding: 12px;
+    border: 2px solid var(--mc-border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+.report-reason:hover {
+    border-color: var(--mc-primary);
+    background: var(--mc-bg-info);
+}
+.report-reason input[type="radio"] {
+    display: none;
+}
+.report-reason input[type="radio"]:checked + label {
+    color: var(--mc-primary);
+    font-weight: 600;
+}
+.report-reason label {
+    cursor: pointer;
+    margin: 0;
+}
+.report-comments {
+    margin-bottom: 25px;
+}
+.report-comments textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 2px solid var(--mc-border);
+    border-radius: 8px;
+    resize: vertical;
+}
+.report-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+</xf:css>
+
+<div class="report-dialog">
+    <h2>Пожаловаться на скин</h2>
+    
+    <div class="report-preview">
+        <div class="report-preview-image">
+            <img src="{$skin.preview_url}" alt="{$skin.skin_name}">
+        </div>
+        <div class="report-preview-info">
+            <h4>{$skin.skin_name}</h4>
+            <p>Автор: @{$skin.User.username}</p>
+            <p>Загружен: <xf:date time="$skin.upload_date" /></p>
+        </div>
+    </div>
+    
+    <xf:form action="{{ link('mcabinet/gallery/report', $skin) }}" ajax="true">
+        <div class="report-reasons">
+            <div class="report-reason">
+                <input type="radio" name="reason" value="nsfw" id="reason_nsfw">
+                <label for="reason_nsfw">🔞 Неприемлемый контент</label>
+            </div>
+            <div class="report-reason">
+                <input type="radio" name="reason" value="copyright" id="reason_copyright">
+                <label for="reason_copyright">©️ Нарушение авторских прав</label>
+            </div>
+            <div class="report-reason">
+                <input type="radio" name="reason" value="spam" id="reason_spam">
+                <label for="reason_spam">📧 Спам</label>
+            </div>
+            <div class="report-reason">
+                <input type="radio" name="reason" value="other" id="reason_other">
+                <label for="reason_other">❓ Другая причина</label>
+            </div>
+        </div>
+        
+        <div class="report-comments">
+            <label for="report_comments">Дополнительные комментарии:</label>
+            <textarea name="comments" id="report_comments" 
+                     placeholder="Опишите подробнее причину жалобы..."></textarea>
+        </div>
+        
+        <div class="report-actions">
+            <button type="submit" class="button button--primary">Отправить жалобу</button>
+            <a href="{{ link('mcabinet/gallery') }}" class="button button--secondary">Отмена</a>
+        </div>
+    </xf:form>
+</div>
+
+<xf:js>
+$(document).ready(function() {
+    // Выбор причины жалобы
+    $('.report-reason').on('click', function() {
+        $('.report-reason').removeClass('selected');
+        $(this).addClass('selected');
+        $(this).find('input[type="radio"]').prop('checked', true);
+    });
+});
+</xf:js>

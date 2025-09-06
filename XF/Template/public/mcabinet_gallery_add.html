@@ -1,0 +1,41 @@
+<xf:title>Добавить в каталог</xf:title>
+
+<xf:css>
+.add-to-catalog-dialog {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    background: var(--mc-bg-card);
+    border-radius: 16px;
+    box-shadow: var(--mc-shadow);
+    text-align: center;
+}
+.preview-image {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    image-rendering: pixelated;
+    border: 2px solid var(--mc-border);
+    border-radius: 8px;
+}
+</xf:css>
+
+<div class="add-to-catalog-dialog">
+    <h2>Добавить скин в каталог</h2>
+    
+    <div class="preview-image">
+        <img src="{{ link('skins/preview', null, {'filename': $skin.skin_texture, 'type': 'full', 'size': 100}) }}" 
+             alt="{$skin.skin_name}"
+             style="max-width: 100%; max-height: 100%;">
+    </div>
+    
+    <p>Вы уверены, что хотите добавить скин <strong>{$skin.skin_name}</strong> в публичный каталог?</p>
+    <p class="formHint">После добавления скин станет виден всем пользователям</p>
+    
+    <xf:form action="{{ link('mcabinet/gallery/add-to-catalog', $skin) }}" class="block">
+        <div class="form-actions" style="margin-top: 30px;">
+            <button type="submit" class="button button--primary">Добавить в каталог</button>
+            <a href="{{ link('mcabinet/gallery') }}" class="button button--secondary">Отмена</a>
+        </div>
+    </xf:form>
+</div>

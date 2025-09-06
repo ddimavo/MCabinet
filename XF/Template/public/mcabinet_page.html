@@ -1,0 +1,244 @@
+<xf:title>Личный кабинет - Управление скином</xf:title>
+
+<xf:css>
+.mcabinet-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.mcabinet-panel {
+    background: linear-gradient(135deg, var(--mc-primary) 0%, var(--mc-secondary) 100%);
+    border-radius: 16px;
+    padding: 30px;
+    color: var(--mc-text-light);
+}
+.mcabinet-controls {
+    background: var(--mc-bg-card);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: var(--mc-shadow);
+    border: 1px solid var(--mc-border);
+}
+.mcabinet-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    color: var(--mc-text-primary);
+    text-align: center;
+}
+.skin-viewer-container {
+    width: 100%;
+    height: 320px;
+    margin: 0 auto 20px;
+    background: var(--mc-bg-preview);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.current-skin-info {
+    background: var(--mc-bg-info);
+    padding: 16px;
+    border-radius: 12px;
+    margin: 20px 0;
+    font-size: 14px;
+    color: var(--mc-text-secondary);
+    border: 1px solid var(--mc-border-light);
+}
+.skin-name {
+    font-weight: 500;
+    color: var(--mc-text-primary);
+}
+.upload-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.upload-btn {
+    background: linear-gradient(135deg, var(--mc-primary) 0%, var(--mc-secondary) 100%);
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    color: var(--mc-text-light);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    text-decoration: none;
+}
+.upload-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--mc-shadow-hover);
+}
+.upload-btn--secondary {
+    background: transparent;
+    color: var(--mc-primary);
+    border: 2px solid var(--mc-primary);
+}
+.upload-btn--secondary:hover {
+    background: var(--mc-primary);
+    color: var(--mc-text-light);
+}
+.remove-btn {
+    background: transparent;
+    color: var(--mc-error);
+    border: 1px solid var(--mc-error);
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    text-align: center;
+}
+.remove-btn:hover {
+    background: var(--mc-error);
+    color: var(--mc-text-light);
+}
+.info-text {
+    text-align: center;
+    color: var(--mc-text-muted);
+    font-size: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--mc-border);
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --mc-bg-card: #1a202c;
+        --mc-bg-info: rgba(255, 255, 255, 0.05);
+        --mc-bg-preview: rgba(255, 255, 255, 0.03);
+        --mc-text-primary: #e2e8f0;
+        --mc-text-secondary: #a0aec0;
+        --mc-text-muted: #718096;
+        --mc-text-light: #ffffff;
+        --mc-border: #2d3748;
+        --mc-border-light: #4a5568;
+        --mc-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        --mc-shadow-hover: 0 6px 25px rgba(102, 126, 234, 0.4);
+        --mc-error: #fc8181;
+    }
+}
+
+/* Светлая тема */
+@media (prefers-color-scheme: light) {
+    :root {
+        --mc-bg-card: #ffffff;
+        --mc-bg-info: rgba(102, 126, 234, 0.05);
+        --mc-bg-preview: rgba(102, 126, 234, 0.03);
+        --mc-text-primary: #2d3748;
+        --mc-text-secondary: #4a5568;
+        --mc-text-muted: #a0aec0;
+        --mc-text-light: #ffffff;
+        --mc-border: #e2e8f0;
+        --mc-border-light: #cbd5e0;
+        --mc-shadow: 0 4px 20px rgba(102, 126, 234, 0.1);
+        --mc-shadow-hover: 0 6px 25px rgba(102, 126, 234, 0.2);
+        --mc-error: #e53e3e;
+    }
+}
+
+/* Общие переменные */
+:root {
+    --mc-primary: #667eea;
+    --mc-secondary: #764ba2;
+}
+
+@media (max-width: 768px) {
+    .mcabinet-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 16px;
+    }
+    .skin-viewer-container {
+        height: 280px;
+    }
+}
+</xf:css>
+
+<div class="mcabinet-container">
+    <!-- Левая панель - 3D превью -->
+    <div class="mcabinet-panel">
+        <h3 class="mcabinet-title" style="color: var(--mc-text-light);">3D Просмотр</h3>
+        <div class="skin-viewer-container">
+            <canvas id="skin-canvas"></canvas>
+        </div>
+        
+        <div class="current-skin-info">
+            <div><strong>Текущий скин:</strong> <span class="skin-name">{{ $userSkin ? $userSkin.skin_name : 'По умолчанию' }}</span></div>
+            <xf:if is="$userSkin">
+                <div><strong>Размер:</strong> {$userSkin.skin_size}</div>
+                <xf:if is="$userSkin.is_hd_skin">
+                    <div><strong>Качество:</strong> HD</div>
+                </xf:if>
+            </xf:if>
+            <xf:if is="$userSkin && $userSkin.cape_texture">
+                <div><strong>Плащ:</strong> Установлен</div>
+                <xf:if is="$userSkin.is_hd_cape">
+                    <div><strong>Качество плаща:</strong> HD</div>
+                </xf:if>
+            </xf:if>
+        </div>
+    </div>
+
+    <!-- Правая панель - управление -->
+    <div class="mcabinet-controls">
+        <h3 class="mcabinet-title">Управление скинами</h3>
+        
+        <div class="upload-buttons">
+            <a href="{{ link('mcabinet/upload-skin') }}" class="upload-btn">
+                📤 Загрузить скин
+            </a>
+            
+            <a href="{{ link('mcabinet/upload-cape') }}" class="upload-btn upload-btn--secondary">
+                🧥 Загрузить плащ
+            </a>
+            
+            <xf:if is="$userSkin">
+                <a href="{{ link('mcabinet/remove-skin') }}" class="remove-btn" overlay="true">
+                    🗑️ Удалить скин
+                </a>
+            </xf:if>
+            
+            <xf:if is="$userSkin && $userSkin.cape_texture">
+                <a href="{{ link('mcabinet/remove-cape') }}" class="remove-btn" overlay="true">
+                    🗑️ Удалить плащ
+                </a>
+            </xf:if>
+        </div>
+        
+        <div class="info-text">
+            PNG • 64×64 пикселя • Макс. 512KB
+            <xf:if is="$xf.visitor.hasPermission('mcabinet', 'uploadHd')">
+                <br>HD-скины доступны
+            </xf:if>
+        </div>
+    </div>
+</div>
+
+<xf:js src="https://cdn.jsdelivr.net/npm/skinview3d@1.0/build/skinview3d.min.js" />
+<xf:js>
+$(document).ready(function() {
+    const skinViewer = new skinview3d.SkinViewer({
+        canvas: document.getElementById("skin-canvas"),
+        width: 250,
+        height: 300,
+        skin: "{{ $userSkin ? $userSkin.skin_url : '/styles/default/skins/steve.png' }}",
+        cape: "{{ $userSkin && $userSkin.cape_texture ? $userSkin.cape_url : '' }}",
+        background: 'transparent'
+    });
+    
+    skinViewer.animation = new skinview3d.WalkingAnimation();
+    skinViewer.animation.speed = 0.5;
+    skinViewer.controls.enableZoom = false;
+    skinViewer.autoRotate = true;
+    skinViewer.autoRotateSpeed = 0.8;
+});
+</xf:js>
