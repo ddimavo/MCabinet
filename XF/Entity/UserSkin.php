@@ -1,6 +1,6 @@
 <?php
 
-namespace MCabinet\XF\Entity;
+namespace ddimavo/MCabinet\XF\Entity;
 
 use XF\Mvc\Entity\Entity;
 use XF\Mvc\Entity\Structure;
@@ -10,7 +10,7 @@ class UserSkin extends Entity
     public static function getStructure(Structure $structure)
     {
         $structure->table = 'xf_mc_user_skins';
-        $structure->shortName = 'MCabinet:UserSkin';
+        $structure->shortName = 'ddimavo/MCabinet:UserSkin';
         $structure->primaryKey = 'skin_id';
         $structure->columns = [
             'skin_id' => ['type' => self::UINT, 'autoIncrement' => true],
@@ -62,7 +62,7 @@ class UserSkin extends Entity
 
     public function getPreviewUrl()
     {
-        $repo = \XF::repository('MCabinet:SkinRepository');
+        $repo = \XF::repository('ddimavo/MCabinet:SkinRepository');
         return $repo->getSkinPreviewUrl($this);
     }
 }

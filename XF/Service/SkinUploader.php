@@ -1,6 +1,6 @@
 <?php
 
-namespace MCabinet\XF\Service;
+namespace ddimavo/MCabinet\XF\Service;
 
 use XF\Service\AbstractService;
 use XF\Util\File;
@@ -75,7 +75,7 @@ class SkinUploader extends AbstractService
     protected function hasHdPermission()
     {
         $visitor = \XF::visitor();
-        return $visitor->hasPermission('mcabinet', 'uploadHd');
+        return $visitor->hasPermission('ddimavo/MCabinet', 'uploadHd');
     }
 
     protected function generateFileName()
@@ -89,7 +89,7 @@ class SkinUploader extends AbstractService
 
     protected function getFilePath($fileName)
     {
-        $basePath = $this->app->options()->mcabinetUploadPath;
+        $basePath = $this->app->options()->ddimavo/MCabinetUploadPath;
         return sprintf('%s/%s', rtrim($basePath, '/'), $fileName);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace MCabinet\XF\Pub\Controller;
+namespace ddimavo/MCabinet\XF\Pub\Controller;
 
 use XF\Mvc\ParameterBag;
 use XF\Pub\Controller\AbstractController;
@@ -12,13 +12,13 @@ class GalleryController extends AbstractController
         $page = $this->filterPage($params->page);
         $perPage = 24;
         
-        $view = $this->view('MCabinet:Gallery\Index', 'mcabinet_gallery', [
+        $view = $this->view('ddimavo/MCabinet:Gallery\Index', 'ddimavo/MCabinet_gallery', [
             'page' => $page,
             'perPage' => $perPage,
             'totalSkins' => $this->getSkinRepo()->getCatalogSkinsCount(),
             'catalogSkins' => $this->getSkinRepo()->getCatalogSkins($page, $perPage),
             'mySkins' => $this->getSkinRepo()->findSkinsForUser(\XF::visitor()->user_id)->fetch(),
-            'canUploadToCatalog' => \XF::visitor()->hasPermission('mcabinet', 'uploadToCatalog')
+            'canUploadToCatalog' => \XF::visitor()->hasPermission('ddimavo/MCabinet', 'uploadToCatalog')
         ]);
         
         return $view;
@@ -38,13 +38,13 @@ class GalleryController extends AbstractController
         
         if ($this->isPost()) {
             $skin->is_in_catalog = true;
-            $skin->catalog_approved = \XF::visitor()->hasPermission('mcabinet', 'moderateCatalog') ? 1 : 0;
+            $skin->catalog_approved = \XF::visitor()->hasPermission('ddimavo/MCabinet', 'moderateCatalog') ? 1 : 0;
             $skin->save();
             
-            return $this->redirect($this->buildLink('mcabinet/gallery'), 'Skin added to catalog successfully.');
+            return $this->redirect($this->buildLink('ddimavo/MCabinet/gallery'), 'Skin added to catalog successfully.');
         }
         
-        return $this->view('MCabinet:Gallery\AddToCatalog', 'mcabinet_gallery_add');
+        return $this->view('ddimavo/MCabinet:Gallery\AddToCatalog', 'ddimavo/MCabinet_gallery_add');
     }
 
     public function actionApplySkin(ParameterBag $params)
@@ -95,19 +95,19 @@ class GalleryController extends AbstractController
             return $this->message('Жалоба отправлена администрации. Спасибо!');
         }
         
-        return $this->view('MCabinet:Gallery\Report', 'mcabinet_gallery_report', [
+        return $this->view('ddimavo/MCabinet:Gallery\Report', 'ddimavo/MCabinet_gallery_report', [
             'skin' => $skin
         ]);
     }
     
     protected function canUploadToCatalog()
     {
-        return \XF::visitor()->hasPermission('mcabinet', 'uploadToCatalog');
+        return \XF::visitor()->hasPermission('ddimavo/MCabinet', 'uploadToCatalog');
     }
     
     protected function getSkinRepo()
     {
-        return $this->repository('MCabinet:SkinRepository');
+        return $this->repository('ddimavo/MCabinet:SkinRepository');
     }
     
     protected function assertSkinExists($id)
@@ -130,7 +130,7 @@ class GalleryController extends AbstractController
             return false;
         }
         
-        $contentUrl = $this->buildLink('canonical:mcabinet/gallery');
+        $contentUrl = $this->buildLink('canonical:ddimavo/MCabinet/gallery');
         
         return $reportRepo->insertReport(
             'mc_skin', 

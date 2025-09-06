@@ -1,6 +1,6 @@
 <?php
 
-namespace MCabinet\XF\Repository;
+namespace ddimavo/MCabinet\XF\Repository;
 
 use XF\Mvc\Entity\Repository;
 
@@ -8,14 +8,14 @@ class SkinRepository extends Repository
 {
     public function findSkinsForUser($userId)
     {
-        return $this->finder('MCabinet:UserSkin')
+        return $this->finder('ddimavo/MCabinet:UserSkin')
             ->where('user_id', $userId)
             ->order('upload_date', 'DESC');
     }
 
     public function getSkinByUuid($uuid)
     {
-        return $this->finder('MCabinet:UserSkin')
+        return $this->finder('ddimavo/MCabinet:UserSkin')
             ->where('uuid', $uuid)
             ->where('is_active', 1)
             ->fetchOne();
@@ -23,14 +23,14 @@ class SkinRepository extends Repository
 
     public function getSkinById($id)
     {
-        return $this->finder('MCabinet:UserSkin')
+        return $this->finder('ddimavo/MCabinet:UserSkin')
             ->where('skin_id', $id)
             ->fetchOne();
     }
 
     public function getCatalogSkins($page = 1, $perPage = 24)
     {
-        return $this->finder('MCabinet:UserSkin')
+        return $this->finder('ddimavo/MCabinet:UserSkin')
             ->where('is_in_catalog', 1)
             ->where('catalog_approved', 1)
             ->order('upload_date', 'DESC')
@@ -40,7 +40,7 @@ class SkinRepository extends Repository
 
     public function getCatalogSkinsCount()
     {
-        return $this->finder('MCabinet:UserSkin')
+        return $this->finder('ddimavo/MCabinet:UserSkin')
             ->where('is_in_catalog', 1)
             ->where('catalog_approved', 1)
             ->total();
@@ -48,7 +48,7 @@ class SkinRepository extends Repository
 
     public function getUserSkinHistory($userId, $page = 1, $perPage = 24)
     {
-        return $this->finder('MCabinet:UserSkin')
+        return $this->finder('ddimavo/MCabinet:UserSkin')
             ->where('user_id', $userId)
             ->where('is_active', 0)
             ->order('upload_date', 'DESC')
@@ -58,7 +58,7 @@ class SkinRepository extends Repository
 
     public function getUserSkinHistoryCount($userId)
     {
-        return $this->finder('MCabinet:UserSkin')
+        return $this->finder('ddimavo/MCabinet:UserSkin')
             ->where('user_id', $userId)
             ->where('is_active', 0)
             ->total();
@@ -66,7 +66,7 @@ class SkinRepository extends Repository
 
     public function getActiveSkin($userId)
     {
-        return $this->finder('MCabinet:UserSkin')
+        return $this->finder('ddimavo/MCabinet:UserSkin')
             ->where('user_id', $userId)
             ->where('is_active', 1)
             ->fetchOne();
@@ -89,7 +89,7 @@ class SkinRepository extends Repository
         }
 
         try {
-            $previewGenerator = \XF::service('MCabinet:SkinPreviewGenerator');
+            $previewGenerator = \XF::service('ddimavo/MCabinet:SkinPreviewGenerator');
             $cacheFilename = $previewGenerator->savePreviewToCache($skin->skin_texture, $type, $size);
             
             if ($cacheFilename) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace MCabinet\XF\Report;
+namespace ddimavo/MCabinet\XF\Report;
 
 use XF\Entity\Report;
 use XF\Mvc\Entity\Entity;
@@ -20,7 +20,7 @@ class Skin extends AbstractHandler
 
     public function getContentUrl(Report $report)
     {
-        return $this->app->router('public')->buildLink('canonical:mcabinet/gallery');
+        return $this->app->router('public')->buildLink('canonical:ddimavo/MCabinet/gallery');
     }
 
     public function getEntityWith()

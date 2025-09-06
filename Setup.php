@@ -1,6 +1,6 @@
 <?php
 
-namespace MCabinet;
+namespace ddimavo\ddimavo/MCabinet;
 
 use XF\AddOn\AbstractSetup;
 use XF\AddOn\StepRunnerInstallTrait;
@@ -52,7 +52,7 @@ class Setup extends AbstractSetup
 
     public function installStep3()
     {
-        $this->registerReportHandler('mc_skin', 'MCabinet:Skin');
+        $this->registerReportHandler('mc_skin', 'ddimavo\ddimavo/MCabinet:Skin');
     }
 
     public function uninstallStep1()

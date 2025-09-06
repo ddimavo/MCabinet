@@ -1,7 +1,7 @@
 <xf:title>Личный кабинет - Управление скином</xf:title>
 
 <xf:css>
-.mcabinet-container {
+.ddimavo/MCabinet-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
@@ -9,20 +9,20 @@
     margin: 0 auto;
     padding: 20px;
 }
-.mcabinet-panel {
+.ddimavo/MCabinet-panel {
     background: linear-gradient(135deg, var(--mc-primary) 0%, var(--mc-secondary) 100%);
     border-radius: 16px;
     padding: 30px;
     color: var(--mc-text-light);
 }
-.mcabinet-controls {
+.ddimavo/MCabinet-controls {
     background: var(--mc-bg-card);
     border-radius: 16px;
     padding: 30px;
     box-shadow: var(--mc-shadow);
     border: 1px solid var(--mc-border);
 }
-.mcabinet-title {
+.ddimavo/MCabinet-title {
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 24px;
@@ -152,7 +152,7 @@
 }
 
 @media (max-width: 768px) {
-    .mcabinet-container {
+    .ddimavo/MCabinet-container {
         grid-template-columns: 1fr;
         gap: 20px;
         padding: 16px;
@@ -163,10 +163,10 @@
 }
 </xf:css>
 
-<div class="mcabinet-container">
+<div class="ddimavo/MCabinet-container">
     <!-- Левая панель - 3D превью -->
-    <div class="mcabinet-panel">
-        <h3 class="mcabinet-title" style="color: var(--mc-text-light);">3D Просмотр</h3>
+    <div class="ddimavo/MCabinet-panel">
+        <h3 class="ddimavo/MCabinet-title" style="color: var(--mc-text-light);">3D Просмотр</h3>
         <div class="skin-viewer-container">
             <canvas id="skin-canvas"></canvas>
         </div>
@@ -189,26 +189,26 @@
     </div>
 
     <!-- Правая панель - управление -->
-    <div class="mcabinet-controls">
-        <h3 class="mcabinet-title">Управление скинами</h3>
+    <div class="ddimavo/MCabinet-controls">
+        <h3 class="ddimavo/MCabinet-title">Управление скинами</h3>
         
         <div class="upload-buttons">
-            <a href="{{ link('mcabinet/upload-skin') }}" class="upload-btn">
+            <a href="{{ link('ddimavo/MCabinet/upload-skin') }}" class="upload-btn">
                 📤 Загрузить скин
             </a>
             
-            <a href="{{ link('mcabinet/upload-cape') }}" class="upload-btn upload-btn--secondary">
+            <a href="{{ link('ddimavo/MCabinet/upload-cape') }}" class="upload-btn upload-btn--secondary">
                 🧥 Загрузить плащ
             </a>
             
             <xf:if is="$userSkin">
-                <a href="{{ link('mcabinet/remove-skin') }}" class="remove-btn" overlay="true">
+                <a href="{{ link('ddimavo/MCabinet/remove-skin') }}" class="remove-btn" overlay="true">
                     🗑️ Удалить скин
                 </a>
             </xf:if>
             
             <xf:if is="$userSkin && $userSkin.cape_texture">
-                <a href="{{ link('mcabinet/remove-cape') }}" class="remove-btn" overlay="true">
+                <a href="{{ link('ddimavo/MCabinet/remove-cape') }}" class="remove-btn" overlay="true">
                     🗑️ Удалить плащ
                 </a>
             </xf:if>
@@ -216,7 +216,7 @@
         
         <div class="info-text">
             PNG • 64×64 пикселя • Макс. 512KB
-            <xf:if is="$xf.visitor.hasPermission('mcabinet', 'uploadHd')">
+            <xf:if is="$xf.visitor.hasPermission('ddimavo/MCabinet', 'uploadHd')">
                 <br>HD-скины доступны
             </xf:if>
         </div>

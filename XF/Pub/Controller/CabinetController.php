@@ -1,6 +1,6 @@
 <?php
 
-namespace MCabinet\XF\Pub\Controller;
+namespace ddimavo/MCabinet\XF\Pub\Controller;
 
 use XF\Mvc\ParameterBag;
 use XF\Pub\Controller\AbstractController;
@@ -22,11 +22,11 @@ class CabinetController extends AbstractController
             'totalRecent' => $skinRepo->getUserSkinHistoryCount(\XF::visitor()->user_id)
         ];
 
-        return $this->view('MCabinet:Cabinet\Index', 'mcabinet_page', $viewParams);
+        return $this->view('ddimavo/MCabinet:Cabinet\Index', 'ddimavo/MCabinet_page', $viewParams);
     }
 
     protected function getSkinRepo()
     {
-        return $this->repository('MCabinet:SkinRepository');
+        return $this->repository('ddimavo/MCabinet:SkinRepository');
     }
 }

@@ -210,7 +210,7 @@
                             <button class="history-action-btn history-action-btn--primary" 
                                     data-xf-click="apply-from-history" 
                                     data-skin-id="{$skin.skin_id}"
-                                    data-url="{{ link('mcabinet/history/apply', $skin) }}">
+                                    data-url="{{ link('ddimavo/MCabinet/history/apply', $skin) }}">
                                 ⚡ Восстановить
                             </button>
                         </div>
@@ -222,7 +222,7 @@
         <xf:if is="$totalSkins > $perPage">
             <div class="pagination">
                 <xf:pagination page="{$page}" perpage="{$perPage}" total="{$totalSkins}" 
-                              link="mcabinet/history" data="{'user_id': $targetUser.user_id}" />
+                              link="ddimavo/MCabinet/history" data="{'user_id': $targetUser.user_id}" />
             </div>
         </xf:if>
     <xf:else />

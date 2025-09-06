@@ -1,9 +1,9 @@
 {
-    "class": "MCabinet\\Setup",
+    "class": "ddimavo\\MCabinet\\Setup",
     "extends": ["api_controller", "user_entity"],
-    "from": "MCabinet",
+    "from": "ddimavo/MCabinet",
     "title": "Minecraft Cabinet",
     "version": "1.0.0",
     "version_id": 1000010,
-    "dev": "Minecraft Cabinet Team"
+    "dev": "ddimavo"
 }

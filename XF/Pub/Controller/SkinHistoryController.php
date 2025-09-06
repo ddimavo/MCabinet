@@ -1,6 +1,6 @@
 <?php
 
-namespace MCabinet\XF\Pub\Controller;
+namespace ddimavo/MCabinet\XF\Pub\Controller;
 
 use XF\Mvc\ParameterBag;
 use XF\Pub\Controller\AbstractController;
@@ -14,7 +14,7 @@ class SkinHistoryController extends AbstractController
         $perPage = 24;
         
         if ($userId && $userId != \XF::visitor()->user_id) {
-            if (!\XF::visitor()->hasPermission('mcabinet', 'viewSkinHistory')) {
+            if (!\XF::visitor()->hasPermission('ddimavo/MCabinet', 'viewSkinHistory')) {
                 return $this->noPermission();
             }
         }
@@ -39,10 +39,10 @@ class SkinHistoryController extends AbstractController
             'perPage' => $perPage,
             'totalSkins' => $totalSkins,
             'isOwnHistory' => $targetUserId == \XF::visitor()->user_id,
-            'canViewOthers' => \XF::visitor()->hasPermission('mcabinet', 'viewSkinHistory')
+            'canViewOthers' => \XF::visitor()->hasPermission('ddimavo/MCabinet', 'viewSkinHistory')
         ];
         
-        return $this->view('MCabinet:SkinHistory\Index', 'mcabinet_history', $viewParams);
+        return $this->view('ddimavo/MCabinet:SkinHistory\Index', 'ddimavo/MCabinet_history', $viewParams);
     }
     
     public function actionApplyFromHistory(ParameterBag $params)
@@ -75,7 +75,7 @@ class SkinHistoryController extends AbstractController
     
     protected function getSkinRepo()
     {
-        return $this->repository('MCabinet:SkinRepository');
+        return $this->repository('ddimavo/MCabinet:SkinRepository');
     }
     
     protected function assertSkinExists($id)

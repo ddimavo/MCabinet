@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <permissions>
     <permission_groups>
-        <permission_group id="mcabinet"/>
+        <permission_group id="ddimavo/MCabinet"/>
     </permission_groups>
     
     <permissions>
-        <permission id="useMcabinet" permission_group_id="mcabinet" permission_type="flag" default_value="unset"/>
-        <permission id="uploadSkin" permission_group_id="mcabinet" permission_type="flag" default_value="unset"/>
-        <permission id="uploadCape" permission_group_id="mcabinet" permission_type="flag" default_value="unset"/>
-        <permission id="uploadHd" permission_group_id="mcabinet" permission_type="flag" default_value="unset"/>
-        <permission id="uploadToCatalog" permission_group_id="mcabinet" permission_type="flag" default_value="unset"/>
-        <permission id="moderateCatalog" permission_group_id="mcabinet" permission_type="flag" default_value="unset"/>
-        <permission id="viewSkinHistory" permission_group_id="mcabinet" permission_type="flag" default_value="unset"/>
+        <permission id="useddimavo/MCabinet" permission_group_id="ddimavo/MCabinet" permission_type="flag" default_value="unset"/>
+        <permission id="uploadSkin" permission_group_id="ddimavo/MCabinet" permission_type="flag" default_value="unset"/>
+        <permission id="uploadCape" permission_group_id="ddimavo/MCabinet" permission_type="flag" default_value="unset"/>
+        <permission id="uploadHd" permission_group_id="ddimavo/MCabinet" permission_type="flag" default_value="unset"/>
+        <permission id="uploadToCatalog" permission_group_id="ddimavo/MCabinet" permission_type="flag" default_value="unset"/>
+        <permission id="moderateCatalog" permission_group_id="ddimavo/MCabinet" permission_type="flag" default_value="unset"/>
+        <permission id="viewSkinHistory" permission_group_id="ddimavo/MCabinet" permission_type="flag" default_value="unset"/>
     </permissions>
 </permissions>

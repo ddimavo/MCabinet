@@ -1,6 +1,6 @@
 <?php
 
-namespace MCabinet\XF\Pub\Controller;
+namespace ddimavo/MCabinet\XF\Pub\Controller;
 
 use XF\Mvc\ParameterBag;
 
@@ -16,7 +16,7 @@ class SkinPreviewController extends AbstractController
             return $this->returnDefaultPreview($type, $size);
         }
 
-        $previewGenerator = $this->service('MCabinet:SkinPreviewGenerator');
+        $previewGenerator = $this->service('ddimavo/MCabinet:SkinPreviewGenerator');
         $cacheFilename = $previewGenerator->savePreviewToCache($filename, $type, $size);
 
         if (!$cacheFilename) {
@@ -38,7 +38,7 @@ class SkinPreviewController extends AbstractController
     {
         $defaultSkin = \XF::getRootDirectory() . '/styles/default/mc-skins/steve.png';
         
-        $previewGenerator = $this->service('MCabinet:SkinPreviewGenerator');
+        $previewGenerator = $this->service('ddimavo/MCabinet:SkinPreviewGenerator');
         
         if ($type === 'head') {
             $tempFile = $previewGenerator->generateHeadPreview($defaultSkin, $size);

@@ -99,7 +99,7 @@
 <div class="upload-form">
     <h2 class="form-title">Загрузка плаща</h2>
     
-    <xf:form action="{{ link('mcabinet/do-upload-cape') }}" upload="true" ajax="true">
+    <xf:form action="{{ link('ddimavo/MCabinet/do-upload-cape') }}" upload="true" ajax="true">
         <div class="form-group">
             <label class="form-label">Файл плаща</label>
             <input type="file" name="cape_file" accept=".png" class="form-input" required>
@@ -108,7 +108,7 @@
         
         <div class="form-actions">
             <button type="submit" class="btn btn--primary">Загрузить</button>
-            <a href="{{ link('mcabinet') }}" class="btn btn--secondary">Отмена</a>
+            <a href="{{ link('ddimavo/MCabinet') }}" class="btn btn--secondary">Отмена</a>
         </div>
     </xf:form>
 </div>

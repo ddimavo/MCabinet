@@ -1,6 +1,6 @@
 <?php
 
-namespace MCabinet\XF\Service;
+namespace ddimavo/MCabinet\XF\Service;
 
 use XF\Service\AbstractService;
 use XF\Util\File;
@@ -13,7 +13,7 @@ class SkinPreviewGenerator extends AbstractService
             return false;
         }
 
-        require_once \XF::getAddOnDirectory() . '/MCabinet/SkinViewer2D.php';
+        require_once \XF::getAddOnDirectory() . '/ddimavo/MCabinet/SkinViewer2D.php';
 
         try {
             $preview = \SkinViewer2D::createPreview($skinPath, false, 'front', $size);
@@ -40,7 +40,7 @@ class SkinPreviewGenerator extends AbstractService
             return false;
         }
 
-        require_once \XF::getAddOnDirectory() . '/MCabinet/SkinViewer2D.php';
+        require_once \XF::getAddOnDirectory() . '/ddimavo/MCabinet/SkinViewer2D.php';
 
         try {
             $preview = \SkinViewer2D::createHead($skinPath, $size);
@@ -89,7 +89,7 @@ class SkinPreviewGenerator extends AbstractService
 
     protected function getSkinFilePath($filename)
     {
-        $basePath = $this->app->options()->mcabinetUploadPath;
+        $basePath = $this->app->options()->ddimavo/MCabinetUploadPath;
         return sprintf('%s/%s', rtrim($basePath, '/'), $filename);
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace MCabinet\XF\Entity;
+namespace ddimavo/MCabinet\XF\Entity;
 
 class User extends XFCP_User
 {

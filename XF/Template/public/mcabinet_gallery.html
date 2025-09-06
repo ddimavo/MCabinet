@@ -228,14 +228,14 @@
                                 <button class="action-btn action-btn--primary" 
                                         data-xf-click="apply-skin" 
                                         data-skin-id="{$skin.skin_id}"
-                                        data-url="{{ link('mcabinet/gallery/apply-skin', $skin) }}">
+                                        data-url="{{ link('ddimavo/MCabinet/gallery/apply-skin', $skin) }}">
                                     ⚡ Установить
                                 </button>
                                 
                                 <button class="action-btn action-btn--secondary" 
                                         data-xf-click="report-skin" 
                                         data-skin-id="{$skin.skin_id}"
-                                        data-url="{{ link('mcabinet/gallery/report', $skin) }}">
+                                        data-url="{{ link('ddimavo/MCabinet/gallery/report', $skin) }}">
                                     🚩 Пожаловаться
                                 </button>
                             </div>
@@ -247,7 +247,7 @@
             <xf:if is="$totalSkins > $perPage">
                 <div class="pagination">
                     <xf:pagination page="{$page}" perpage="{$perPage}" total="{$totalSkins}" 
-                                  link="mcabinet/gallery" />
+                                  link="ddimavo/MCabinet/gallery" />
                 </div>
             </xf:if>
         <xf:else />
@@ -256,7 +256,7 @@
                 <h3>Каталог пуст</h3>
                 <p>Здесь пока нет ни одного скина</p>
                 <xf:if is="$canUploadToCatalog">
-                    <a href="{{ link('mcabinet/upload-skin') }}" class="button button--primary">
+                    <a href="{{ link('ddimavo/MCabinet/upload-skin') }}" class="button button--primary">
                         Загрузить первый скин
                     </a>
                 </xf:if>
@@ -292,12 +292,12 @@
                                 <button class="action-btn action-btn--primary" 
                                         data-xf-click="apply-skin" 
                                         data-skin-id="{$skin.skin_id}"
-                                        data-url="{{ link('mcabinet/gallery/apply-skin', $skin) }}">
+                                        data-url="{{ link('ddimavo/MCabinet/gallery/apply-skin', $skin) }}">
                                     ⚡ Установить
                                 </button>
                                 
                                 <xf:if is="!$skin.is_in_catalog and $canUploadToCatalog">
-                                    <a href="{{ link('mcabinet/gallery/add-to-catalog', $skin) }}" 
+                                    <a href="{{ link('ddimavo/MCabinet/gallery/add-to-catalog', $skin) }}" 
                                        class="action-btn action-btn--secondary">
                                         ⭐ В каталог
                                     </a>
@@ -306,10 +306,10 @@
                         </div>
                         <div class="gallery-actions">
                             <xf:if is="!$skin.is_in_catalog and $canUploadToCatalog">
-                                <a href="{{ link('mcabinet/gallery/add-to-catalog', $skin) }}" 
+                                <a href="{{ link('ddimavo/MCabinet/gallery/add-to-catalog', $skin) }}" 
                                    class="gallery-action-btn" title="Добавить в каталог">⭐</a>
                             </xf:if>
-                            <a href="{{ link('mcabinet/remove-skin', $skin) }}" 
+                            <a href="{{ link('ddimavo/MCabinet/remove-skin', $skin) }}" 
                                class="gallery-action-btn" title="Удалить">🗑️</a>
                         </div>
                     </div>
@@ -320,7 +320,7 @@
                 <div class="empty-state-icon">🖼️</div>
                 <h3>У вас пока нет скинов</h3>
                 <p>Загрузите свой первый скин чтобы начать</p>
-                <a href="{{ link('mcabinet/upload-skin') }}" class="button button--primary">
+                <a href="{{ link('ddimavo/MCabinet/upload-skin') }}" class="button button--primary">
                     Загрузить скин
                 </a>
             </div>

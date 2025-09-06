@@ -1,11 +1,11 @@
 <?php
 
-namespace MCabinet\XF\Listener;
+namespace ddimavo/MCabinet\XF\Listener;
 
 class UserEntity
 {
     public static function extendUserEntity($class, array &$extend)
     {
-        $extend[] = 'MCabinet\XF\Entity\User';
+        $extend[] = 'ddimavo/MCabinet\XF\Entity\User';
     }
 }
