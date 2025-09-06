@@ -1,6 +1,6 @@
 <?php
 
-namespace ddimavo\ddimavo/MCabinet;
+namespace ddimavo\MCabinet;
 
 use XF\AddOn\AbstractSetup;
 use XF\AddOn\StepRunnerInstallTrait;
